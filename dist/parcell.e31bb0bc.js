@@ -118,6 +118,13 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"medicalInstitution/Person.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Person = void 0;
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Person = function Person(firstName, lastName) {
@@ -126,6 +133,8 @@ var Person = function Person(firstName, lastName) {
   this._firstName = firstName;
   this._lastName = lastName;
 };
+
+exports.Person = Person;
 },{}],"medicalInstitution/Doctor.js":[function(require,module,exports) {
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -179,34 +188,47 @@ var Patient = /*#__PURE__*/function () {
 
   return Patient;
 }();
-},{}],"medicalInstitution/AppointmentSchedule.js":[function(require,module,exports) {
+},{}],"medicalInstitution/BloodSugarExam.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.BloodSugarExam = void 0;
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var ScheduledAppointment = /*#__PURE__*/function () {
-  function ScheduledAppointment(doctor, patient, type, scheduledDate, scheduledTime) {
-    _classCallCheck(this, ScheduledAppointment);
+var BloodSugarExam = /*#__PURE__*/function () {
+  function BloodSugarExam() {
+    _classCallCheck(this, BloodSugarExam);
 
-    this.type = type;
-    this.doctor = doctor;
-    this.patient = patient;
-    this.scheduledDate = scheduledDate;
-    this.scheduledTime = scheduledTime;
+    this.lastMealTime = Date.getTime();
+    this.sugarLevel = Math.floor(Math.random() * 10 + 1);
   }
 
-  _createClass(ScheduledAppointment, [{
-    key: "schedule",
-    value: function schedule() {
-      return "Appointment ".concat(this.type, ",  for ").concat(this.patient.firstName, " has been successfully scheduled by doctor ").concat(this.doctor.firstName, " on ").concat(this.scheduledDate, " in ").concat(this.scheduledTime);
+  _createClass(BloodSugarExam, [{
+    key: "execute",
+    value: function execute() {
+      return "Results for blood sugar are: ".concat(this.sugarLevel, " , ").concat(this.lastMealTime, ".");
     }
   }]);
 
-  return ScheduledAppointment;
+  return BloodSugarExam;
 }();
+
+exports.BloodSugarExam = BloodSugarExam;
 },{}],"medicalInstitution/BloodPressureExam.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.BloodPressureExam = void 0;
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -223,39 +245,24 @@ var BloodPressureExam = /*#__PURE__*/function () {
   }
 
   _createClass(BloodPressureExam, [{
-    key: "exam",
-    value: function exam() {
+    key: "execute",
+    value: function execute() {
       return "Results for blood pressure are: ".concat(this.upperValue, " , ").concat(this.lowerValue, ", ").concat(this.pulse, ".");
     }
   }]);
 
   return BloodPressureExam;
 }();
-},{}],"medicalInstitution/BloodSugarExam.js":[function(require,module,exports) {
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var BloodSugarExam = /*#__PURE__*/function () {
-  function BloodSugarExam() {
-    _classCallCheck(this, BloodSugarExam);
-
-    this.lastMealTime = Date.getTime();
-    this.sugarLevel = Math.floor(Math.random() * 10 + 1);
-  }
-
-  _createClass(BloodSugarExam, [{
-    key: "exam",
-    value: function exam() {
-      return "Results for blood sugar are: ".concat(this.sugarLevel, " , ").concat(this.lastMealTime, ".");
-    }
-  }]);
-
-  return BloodSugarExam;
-}();
+exports.BloodPressureExam = BloodPressureExam;
 },{}],"medicalInstitution/BloodCholesterolExam.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.BloodCholesterolExam = void 0;
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -271,24 +278,29 @@ var BloodCholesterolExam = /*#__PURE__*/function () {
   }
 
   _createClass(BloodCholesterolExam, [{
-    key: "exam",
-    value: function exam() {
+    key: "execute",
+    value: function execute() {
       return "Results for blood cholesterol are: ".concat(this.cholesterolLevel, " , ").concat(this.lastMealTime, ".");
     }
   }]);
 
   return BloodCholesterolExam;
 }();
+
+exports.BloodCholesterolExam = BloodCholesterolExam;
 },{}],"medicalInstitution/AppointmentRecord.js":[function(require,module,exports) {
 "use strict";
 
-var _BloodPressureExam = _interopRequireDefault(require("./BloodPressureExam.js"));
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.AppointmentRecord = void 0;
 
-var _BloodSugarExam = _interopRequireDefault(require("./BloodSugarExam.js"));
+var _BloodSugarExam = require("./BloodSugarExam.js");
 
-var _BloodCholesterolExam = _interopRequireDefault(require("./BloodCholesterolExam.js"));
+var _BloodPressureExam = require("./BloodPressureExam.js");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _BloodCholesterolExam = require("./BloodCholesterolExam.js");
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -310,59 +322,97 @@ var AppointmentRecord = /*#__PURE__*/function () {
 
       switch (this.schedule.type) {
         case 'blood pressure':
-          exam = new _BloodPressureExam.default();
+          exam = new _BloodPressureExam.BloodPressureExam();
           break;
 
         case 'blood cholesterol':
-          exam = new _BloodCholesterolExam.default();
+          exam = new _BloodCholesterolExam.BloodCholesterolExam();
           break;
 
         case 'blood sugar':
-          exam = new _BloodSugarExam.default();
+          exam = new _BloodSugarExam.BloodSugarExam();
+          break;
+
+        default:
+          exam = new _BloodPressureExam.BloodPressureExam();
           break;
       }
 
-      return "Exam ".concat(this.schedule.type, " has been done for patient ").concat(this.schedule.patient.firstName, ", and ").concat(this.exam.exam());
+      return "Exam ".concat(this.schedule.type, " has been done for patient ").concat(this.schedule.patient.firstName, ", and ").concat(this.exam.execute());
     }
   }]);
 
   return AppointmentRecord;
 }();
-},{"./BloodPressureExam.js":"medicalInstitution/BloodPressureExam.js","./BloodSugarExam.js":"medicalInstitution/BloodSugarExam.js","./BloodCholesterolExam.js":"medicalInstitution/BloodCholesterolExam.js"}],"index.js":[function(require,module,exports) {
+
+exports.AppointmentRecord = AppointmentRecord;
+},{"./BloodSugarExam.js":"medicalInstitution/BloodSugarExam.js","./BloodPressureExam.js":"medicalInstitution/BloodPressureExam.js","./BloodCholesterolExam.js":"medicalInstitution/BloodCholesterolExam.js"}],"medicalInstitution/AppointmentSchedule.js":[function(require,module,exports) {
 "use strict";
 
-var _Person = _interopRequireDefault(require("./medicalInstitution/Person.js"));
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.AppointmentSchedule = void 0;
 
-var _Doctor = _interopRequireDefault(require("./medicalInstitution/Doctor.js"));
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var _Patient = _interopRequireDefault(require("./medicalInstitution/Patient.js"));
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-var _AppointmentSchedule = _interopRequireDefault(require("./medicalInstitution/AppointmentSchedule.js"));
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var _AppointmentRecord = _interopRequireDefault(require("./medicalInstitution/AppointmentRecord.js"));
+var AppointmentSchedule = /*#__PURE__*/function () {
+  function AppointmentSchedule(doctor, patient, type, scheduledDate, scheduledTime) {
+    _classCallCheck(this, AppointmentSchedule);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+    this.type = type;
+    this.doctor = doctor;
+    this.patient = patient;
+    this.scheduledDate = scheduledDate;
+    this.scheduledTime = scheduledTime;
+  }
 
-simulation();
+  _createClass(AppointmentSchedule, [{
+    key: "schedule",
+    value: function schedule() {
+      return " Appointment ".concat(this.type, ",  for ").concat(this.patient.firstName, " has been successfully scheduled by doctor ").concat(this.doctor.firstName, " on ").concat(this.scheduledDate, " in ").concat(this.scheduledTime, " ");
+    }
+  }]);
 
-function simulation() {
-  var milan = new _Doctor.default('Milan', 'Doktorovic', 'Gastroenternolog');
+  return AppointmentSchedule;
+}();
+
+exports.AppointmentSchedule = AppointmentSchedule;
+},{}],"index.js":[function(require,module,exports) {
+"use strict";
+
+var _Person = require("./medicalInstitution/Person.js");
+
+var _Doctor = require("./medicalInstitution/Doctor.js");
+
+var _Patient = require("./medicalInstitution/Patient.js");
+
+var _AppointmentRecord = require("./medicalInstitution/AppointmentRecord.js");
+
+var _AppointmentSchedule = require("./medicalInstitution/AppointmentSchedule.js");
+
+(function () {
+  var milan = new _Doctor.Doctor("Milan", "Doktorovic", "Gastroenternolog");
   console.log("[ ".concat(new Date(), " ] kreiran doktor Milan"));
-  var dragan = new _Patient.default('Dragan', 'Pacijentic', 1234567891234, 36);
+  var dragan = new _Patient.Patient("Dragan", "Pacijentic", 1234567891234, 36);
   console.log("[ ".concat(new Date(), " ] kreiran pacijent Dragan"));
   dragan.chooseTheDoctor(milan);
   console.log("[ ".concat(new Date(), " ] pacijent izabrao doktora"));
   milan.addPatient(dragan);
-  var appointment1 = new _AppointmentSchedule.default('blood sugar', milan, dragan, new Date(), new Date.now());
+  var appointment1 = new _AppointmentSchedule.AppointmentSchedule("blood sugar", milan, dragan, new Date(), new Date.now());
   console.log(appointment1.schedule());
-  var appointment2 = new _AppointmentSchedule.default('blood pressure', milan, dragan, new Date(), new Date.now());
+  var appointment2 = new _AppointmentSchedule.AppointmentSchedule("blood pressure", milan, dragan, new Date(), new Date.now());
   console.log(appointment2.schedule());
-  var record1 = new _AppointmentRecord.default(appointment1);
+  var record1 = new _AppointmentRecord.AppointmentRecord(appointment1);
   console.log("[ ".concat(new Date(), " ] ").concat(record1.returnResults(), " pregled 1 izvrsen "));
-  var record2 = new _AppointmentRecord.default(appointment2);
+  var record2 = new _AppointmentRecord.AppointmentRecord(appointment2);
   console.log(" [ ".concat(new Date(), " ] ").concat(record2.returnResults(), " pregled 2 izvrsen "));
-}
-},{"./medicalInstitution/Person.js":"medicalInstitution/Person.js","./medicalInstitution/Doctor.js":"medicalInstitution/Doctor.js","./medicalInstitution/Patient.js":"medicalInstitution/Patient.js","./medicalInstitution/AppointmentSchedule.js":"medicalInstitution/AppointmentSchedule.js","./medicalInstitution/AppointmentRecord.js":"medicalInstitution/AppointmentRecord.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+})();
+},{"./medicalInstitution/Person.js":"medicalInstitution/Person.js","./medicalInstitution/Doctor.js":"medicalInstitution/Doctor.js","./medicalInstitution/Patient.js":"medicalInstitution/Patient.js","./medicalInstitution/AppointmentRecord.js":"medicalInstitution/AppointmentRecord.js","./medicalInstitution/AppointmentSchedule.js":"medicalInstitution/AppointmentSchedule.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -390,7 +440,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50102" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62559" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

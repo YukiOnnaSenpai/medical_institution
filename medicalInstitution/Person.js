@@ -5,3 +5,5 @@ class Person {
 		this._lastName = lastName;
 	}
 }
+
+export { Person }

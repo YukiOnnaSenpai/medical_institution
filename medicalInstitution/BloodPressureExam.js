@@ -6,8 +6,9 @@ class BloodPressureExam{
 		this.lowerValue = Math.floor((Math.random() * 100) + 1);
 	}
 
-	exam() {
+	execute() {
 		return `Results for blood pressure are: ${this.upperValue} , ${this.lowerValue}, ${this.pulse}.`;
 	}
 
 }
+export { BloodPressureExam }

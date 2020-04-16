@@ -1,6 +1,6 @@
-import BloodPressureExam from './BloodPressureExam.js';
-import BloodSugarExam from './BloodSugarExam.js';
-import BloodCholesterolExam from './BloodCholesterolExam.js';
+import { BloodSugarExam } from './BloodSugarExam.js';
+import { BloodPressureExam } from './BloodPressureExam.js';
+import { BloodCholesterolExam } from './BloodCholesterolExam.js';
 
 class AppointmentRecord {
 
@@ -9,8 +9,9 @@ class AppointmentRecord {
 	}
 
 	returnResults() {
-		let exam;
-		switch(this.schedule.type){
+		var exam;
+
+		switch(this.schedule.type) {
 			case 'blood pressure':
 				exam = new BloodPressureExam();
 				break;
@@ -20,8 +21,14 @@ class AppointmentRecord {
 			case 'blood sugar':
 				exam = new BloodSugarExam();
 				break;
+			default:
+				exam = new BloodPressureExam();
+				break;
 		}
-		return `Exam ${this.schedule.type} has been done for patient ${this.schedule.patient.firstName}, and ${this.exam.exam()}`;
+		
+		return `Exam ${this.schedule.type} has been done for patient ${this.schedule.patient.firstName}, and ${this.exam.execute()}`;
+
 	}
 
 }
+export { AppointmentRecord }

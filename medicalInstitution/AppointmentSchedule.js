@@ -1,4 +1,4 @@
-class ScheduledAppointment {
+class AppointmentSchedule {
 
 	constructor(doctor, patient, type, scheduledDate, scheduledTime) {
 		this.type = type;
@@ -9,6 +9,7 @@ class ScheduledAppointment {
 	}
 
 	schedule() {
-		return `Appointment ${this.type},  for ${this.patient.firstName} has been successfully scheduled by doctor ${this.doctor.firstName} on ${this.scheduledDate} in ${this.scheduledTime}`;
+		return ` Appointment ${this.type},  for ${this.patient.firstName} has been successfully scheduled by doctor ${this.doctor.firstName} on ${this.scheduledDate} in ${this.scheduledTime} `;
 	}
 }
+export { AppointmentSchedule }
