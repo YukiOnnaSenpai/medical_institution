@@ -1,14 +1,16 @@
-class Doctor {
-	
+import { Person }   from './Person.js';
+
+class Doctor extends Person {
+
 	constructor(firstName, lastName, specialty) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.specialty = specialty;
-		this.patients = [];
+		super(firstName,lastName);
+		this._specialty = specialty;
+		this._patients = [];
 	}
 
 	addPatient(patient) {
 		this.patients.push(patient);
 	}
-	//promis za kad ga izabere pacijent
+
 }
+export { Doctor }

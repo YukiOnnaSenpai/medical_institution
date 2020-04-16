@@ -1,9 +1,10 @@
-class Patient{
+import { Person } from './Person.js';
 
-	constructor(firstName, lastName, ID, medicalNumber) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.ID = ID;
+class Patient extends Person{
+
+	constructor(firstName, lastName, id, medicalNumber) {
+		super(firstName,lastName);
+		this.id = id;
 		this.medicalNumber = medicalNumber;
 	}
 
@@ -12,3 +13,4 @@ class Patient{
 	}
 
 }
+export { Patient }

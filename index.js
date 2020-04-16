@@ -7,19 +7,20 @@ import { AppointmentSchedule } from './medicalInstitution/AppointmentSchedule.js
 
 (function() {
 
+	var date = new Date();
+
 	var milan = new Doctor("Milan", "Doktorovic", "Gastroenternolog");
-	console.log(`[ ${new Date} ] kreiran doktor Milan`);
+	console.log(`[ ${date} ] kreiran doktor Milan`);
 
 	var dragan = new Patient("Dragan", "Pacijentic",1234567891234, 36);
-	console.log(`[ ${new Date} ] kreiran pacijent Dragan`);
+	console.log(`[ ${date} ] kreiran pacijent Dragan`);
 
 	dragan.chooseTheDoctor(milan);
-	console.log(`[ ${new Date} ] pacijent izabrao doktora`);
-	milan.addPatient(dragan);
+	console.log(`[ ${date} ] pacijent izabrao doktora`);
 
-	let appointment1 = new AppointmentSchedule("blood sugar", milan, dragan, new Date, new Date.now());
+	let appointment1 = new AppointmentSchedule("blood sugar", milan, dragan, date, date.getTime());
 	console.log(appointment1.schedule());
-	let appointment2 = new AppointmentSchedule("blood pressure", milan, dragan, new Date, new Date.now());
+	let appointment2 = new AppointmentSchedule("blood pressure", milan, dragan, date, date.getTime());
 	console.log(appointment2.schedule());
 
 	let record1 = new AppointmentRecord(appointment1);

@@ -26,7 +26,7 @@ class AppointmentRecord {
 				break;
 		}
 		
-		return `Exam ${this.schedule.type} has been done for patient ${this.schedule.patient.firstName}, and ${this.exam.execute()}`;
+		return `Exam ${this.schedule.type} has been done for patient ${this.schedule.patient.firstName}, and ${exam.execute()}`;
 
 	}
 
