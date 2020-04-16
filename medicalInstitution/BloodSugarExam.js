@@ -1,7 +1,8 @@
 class BloodSugarExam{
 
 	constructor() {
-		this.lastMealTime = Date.getTime();
+		var date = new Date();
+		this.lastMealTime = date.getTime();
 		this.sugarLevel = Math.floor((Math.random() * 10) + 1);
 	}
 

@@ -130,8 +130,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var Person = function Person(firstName, lastName) {
   _classCallCheck(this, Person);
 
-  this._firstName = firstName;
-  this._lastName = lastName;
+  this.firstName = firstName;
+  this.lastName = lastName;
 };
 
 exports.Person = Person;
@@ -178,8 +178,8 @@ var Doctor = /*#__PURE__*/function (_Person) {
     _classCallCheck(this, Doctor);
 
     _this = _super.call(this, firstName, lastName);
-    _this._specialty = specialty;
-    _this._patients = [];
+    _this.specialty = specialty;
+    _this.patients = [];
     return _this;
   }
 
@@ -271,7 +271,8 @@ var BloodSugarExam = /*#__PURE__*/function () {
   function BloodSugarExam() {
     _classCallCheck(this, BloodSugarExam);
 
-    this.lastMealTime = Date.getTime();
+    var date = new Date();
+    this.lastMealTime = date.getTime();
     this.sugarLevel = Math.floor(Math.random() * 10 + 1);
   }
 
@@ -338,7 +339,8 @@ var BloodCholesterolExam = /*#__PURE__*/function () {
   function BloodCholesterolExam() {
     _classCallCheck(this, BloodCholesterolExam);
 
-    this.lastMealTime = Date.getTime();
+    var date = new Date();
+    this.lastMealTime = date.getTime();
     this.cholesterolLevel = Math.floor(Math.random() * 10 + 1);
   }
 
@@ -382,7 +384,7 @@ var AppointmentRecord = /*#__PURE__*/function () {
 
   _createClass(AppointmentRecord, [{
     key: "returnResults",
-    value: function returnResults() {
+    value: function returnResults(schedule) {
       var exam;
 
       switch (this.schedule.type) {
@@ -426,7 +428,7 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 var AppointmentSchedule = /*#__PURE__*/function () {
-  function AppointmentSchedule(doctor, patient, type, scheduledDate, scheduledTime) {
+  function AppointmentSchedule(type, doctor, patient, scheduledDate, scheduledTime) {
     _classCallCheck(this, AppointmentSchedule);
 
     this.type = type;
@@ -438,7 +440,7 @@ var AppointmentSchedule = /*#__PURE__*/function () {
 
   _createClass(AppointmentSchedule, [{
     key: "schedule",
-    value: function schedule() {
+    value: function schedule(app) {
       return " Appointment ".concat(this.type, ",  for ").concat(this.patient.firstName, " has been successfully scheduled by doctor ").concat(this.doctor.firstName, " on ").concat(this.scheduledDate, " in ").concat(this.scheduledTime, " ");
     }
   }]);
@@ -462,20 +464,20 @@ var _AppointmentSchedule = require("./medicalInstitution/AppointmentSchedule.js"
 
 (function () {
   var date = new Date();
-  var milan = new _Doctor.Doctor("Milan", "Doktorovic", "Gastroenternolog");
-  console.log("[ ".concat(date, " ] kreiran doktor Milan"));
-  var dragan = new _Patient.Patient("Dragan", "Pacijentic", 1234567891234, 36);
-  console.log("[ ".concat(date, " ] kreiran pacijent Dragan"));
-  dragan.chooseTheDoctor(milan);
-  console.log("[ ".concat(date, " ] pacijent izabrao doktora"));
-  var appointment1 = new _AppointmentSchedule.AppointmentSchedule("blood sugar", milan, dragan, date, date.getTime());
-  console.log(appointment1.schedule());
-  var appointment2 = new _AppointmentSchedule.AppointmentSchedule("blood pressure", milan, dragan, date, date.getTime());
-  console.log(appointment2.schedule());
+  var doctor = new _Doctor.Doctor("Milan", "Doktorovic", "Gastroenternolog");
+  console.log("[ ".concat(date, " ] created doctor ").concat(doctor.firstName));
+  var patient = new _Patient.Patient("Dragan", "Pacijentic", 1234567891234, 36);
+  console.log("[ ".concat(date, " ] created patient ").concat(patient.firstName));
+  patient.chooseTheDoctor(doctor);
+  console.log("[ ".concat(date, " ] patient ").concat(patient.firstName, " has choosen doctor ").concat(doctor.firstName));
+  var appointment1 = new _AppointmentSchedule.AppointmentSchedule("blood sugar", doctor, patient, date, date.getTime());
+  console.log(appointment1.schedule(appointment1));
+  var appointment2 = new _AppointmentSchedule.AppointmentSchedule("blood pressure", doctor, patient, date, date.getTime());
+  console.log(appointment2.schedule(appointment2));
   var record1 = new _AppointmentRecord.AppointmentRecord(appointment1);
-  console.log("[ ".concat(new Date(), " ] ").concat(record1.returnResults(), " pregled 1 izvrsen "));
+  console.log("[ ".concat(new Date(), " ] ").concat(record1.returnResults(record1), " appointment 1 has been executed "));
   var record2 = new _AppointmentRecord.AppointmentRecord(appointment2);
-  console.log(" [ ".concat(new Date(), " ] ").concat(record2.returnResults(), " pregled 2 izvrsen "));
+  console.log(" [ ".concat(new Date(), " ] ").concat(record2.returnResults(record2), " appointment 2 has been executed "));
 })();
 },{"./medicalInstitution/Person.js":"medicalInstitution/Person.js","./medicalInstitution/Doctor.js":"medicalInstitution/Doctor.js","./medicalInstitution/Patient.js":"medicalInstitution/Patient.js","./medicalInstitution/AppointmentRecord.js":"medicalInstitution/AppointmentRecord.js","./medicalInstitution/AppointmentSchedule.js":"medicalInstitution/AppointmentSchedule.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];

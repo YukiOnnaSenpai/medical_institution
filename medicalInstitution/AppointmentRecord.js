@@ -8,7 +8,7 @@ class AppointmentRecord {
 		this.schedule = schedule;
 	}
 
-	returnResults() {
+	returnResults(schedule) {
 		var exam;
 
 		switch(this.schedule.type) {

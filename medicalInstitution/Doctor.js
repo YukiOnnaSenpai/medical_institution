@@ -4,8 +4,8 @@ class Doctor extends Person {
 
 	constructor(firstName, lastName, specialty) {
 		super(firstName,lastName);
-		this._specialty = specialty;
-		this._patients = [];
+		this.specialty = specialty;
+		this.patients = [];
 	}
 
 	addPatient(patient) {

@@ -9,23 +9,23 @@ import { AppointmentSchedule } from './medicalInstitution/AppointmentSchedule.js
 
 	var date = new Date();
 
-	var milan = new Doctor("Milan", "Doktorovic", "Gastroenternolog");
-	console.log(`[ ${date} ] kreiran doktor Milan`);
+	var doctor = new Doctor("Milan", "Doktorovic", "Gastroenternolog");
+	console.log(`[ ${date} ] created doctor ${doctor.firstName}`);
 
-	var dragan = new Patient("Dragan", "Pacijentic",1234567891234, 36);
-	console.log(`[ ${date} ] kreiran pacijent Dragan`);
+	var patient = new Patient("Dragan", "Pacijentic",1234567891234, 36);
+	console.log(`[ ${date} ] created patient ${patient.firstName}`);
 
-	dragan.chooseTheDoctor(milan);
-	console.log(`[ ${date} ] pacijent izabrao doktora`);
+	patient.chooseTheDoctor(doctor);
+	console.log(`[ ${date} ] patient ${patient.firstName} has choosen doctor ${doctor.firstName}`);
 
-	let appointment1 = new AppointmentSchedule("blood sugar", milan, dragan, date, date.getTime());
-	console.log(appointment1.schedule());
-	let appointment2 = new AppointmentSchedule("blood pressure", milan, dragan, date, date.getTime());
-	console.log(appointment2.schedule());
+	let appointment1 = new AppointmentSchedule("blood sugar", doctor, patient, date, date.getTime());
+	console.log(appointment1.schedule(appointment1));
+	let appointment2 = new AppointmentSchedule("blood pressure", doctor, patient, date, date.getTime());
+	console.log(appointment2.schedule(appointment2));
 
 	let record1 = new AppointmentRecord(appointment1);
-	console.log(`[ ${new Date} ] ${record1.returnResults()} pregled 1 izvrsen `);
+	console.log(`[ ${new Date} ] ${record1.returnResults(record1)} appointment 1 has been executed `);
 	let record2 = new AppointmentRecord(appointment2);
-	console.log(` [ ${new Date} ] ${record2.returnResults()} pregled 2 izvrsen `);
+	console.log(` [ ${new Date} ] ${record2.returnResults(record2)} appointment 2 has been executed `);
 
 })();
