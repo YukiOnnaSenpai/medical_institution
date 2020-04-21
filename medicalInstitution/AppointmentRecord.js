@@ -1,32 +1,13 @@
-import { BloodSugarExam } from './BloodSugarExam.js';
-import { BloodPressureExam } from './BloodPressureExam.js';
-import { BloodCholesterolExam } from './BloodCholesterolExam.js';
-
 class AppointmentRecord {
 
-	constructor(schedule) {
-		this.schedule = schedule;
-	}
+	constructor() {
+        if (this.constructor === AppointmentRecord) {
+            throw new TypeError('Abstract class cannot be instantiated directly.'); 
+        }
+    }
 
-	returnResults(schedule) {
-		var exam;
-
-		switch(this.schedule.type) {
-			case 'blood pressure':
-				exam = new BloodPressureExam();
-				break;
-			case 'blood cholesterol':
-				exam = new BloodCholesterolExam();
-				break;
-			case 'blood sugar':
-				exam = new BloodSugarExam();
-				break;
-			default:
-				exam = new BloodPressureExam();
-				break;
-		}
-		
-		return `Exam ${this.schedule.type} has been done for patient ${this.schedule.patient.firstName}, and ${exam.execute()}`;
+	execute() {
+		throw new Error('you cannot exeecute abstract class.');
 
 	}
 

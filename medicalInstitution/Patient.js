@@ -12,5 +12,9 @@ class Patient extends Person{
 		this.choosenDoctor = doctor;
 	}
 
+	getScheduledForAnAppointment(appointment) {
+		this.appointment = appointment;
+	}
+
 }
 export { Patient }
