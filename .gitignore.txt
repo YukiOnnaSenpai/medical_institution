@@ -109,7 +109,7 @@ tmp/
 temp/
 
 #Cache and dist
-/.cache
-/dist
+.cache/
+dist/
 
 # End of https://www.gitignore.io/api/node
