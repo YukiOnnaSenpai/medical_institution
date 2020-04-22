@@ -1,4 +1,6 @@
+import { Logger } from './Logger.js';
 import { Person }   from './Person.js';
+import { singletonLogger } from './/SingletonLogger.js';
 import { BloodSugarExam } from './BloodSugarExam.js';
 import { BloodPressureExam } from './BloodPressureExam.js';
 import { BloodCholesterolExam } from './BloodCholesterolExam.js';
@@ -11,6 +13,8 @@ class Doctor extends Person {
 		this.specialty = specialty;
 		this.patients = [];
 		this.appointments = [];
+		Logger.createDoctor(firstName);
+		singletonLogger.createDoctor(firstName);
 	}
 
 	addPatient(patient) {
@@ -22,30 +26,28 @@ class Doctor extends Person {
 	}
 
 	makeAnAppointment(type, doctor, patient, scheduledDate, scheduledTime) {
-		const appointment = {};
+		let appointment = {};
 
 		switch(type) {
 			case 'blood pressure':
-				appointment.type = new BloodPressureExam();
+				appointment = new BloodPressureExam( doctor, patient, scheduledDate, scheduledTime);
 				break;
 			case 'blood cholesterol':
-				appointment.type = new BloodCholesterolExam();
+				appointment = new BloodCholesterolExam( doctor, patient, scheduledDate, scheduledTime);
 				break;
 			case 'blood sugar':
-				appointment.type = new BloodSugarExam();
+				appointment = new BloodSugarExam( doctor, patient, scheduledDate, scheduledTime);
 				break;
 			default:
-				appointment.type = new BloodPressureExam();
+				appointment = new BloodPressureExam( doctor, patient, scheduledDate, scheduledTime);
 				break;
 		}
 
-		appointment.doctor = doctor;
-		appointment.patient = patient;
-		appointment.scheduledDate = scheduledDate;
-		appointment.scheduledTime = scheduledTime;
-
 		this.addAnAppointment(appointment);
-		patient.getScheduledForAnAppointment(appointment);
+		patient.setAnAppointment(appointment);
+
+		Logger.scheduleAppointment(appointment);
+		singletonLogger.scheduleAppointment(appointment);
 
 		return appointment;
 

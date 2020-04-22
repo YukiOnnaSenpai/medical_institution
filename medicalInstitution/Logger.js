@@ -17,7 +17,7 @@ class Logger {
 	}
 
 	static executeAppointment(appointment) {
-		console.log(`[ ${new Date} ] appointment has been executed ${ appointment.type.execute() } `);
+		console.log(`[ ${new Date} ] appointment has been executed ${ appointment.execute() } `);
 	}
 
 }
