@@ -15,7 +15,7 @@ import { Patient }  from './medicalInstitution/Patient.js';
 	let appointment1 = doctor.makeAnAppointment("blood sugar", doctor, patient, date, date.getTime());
 	let appointment2 = doctor.makeAnAppointment("blood pressure", doctor, patient, date, date.getTime());
 
-	patient.goToAppointment(appointment1);
-	patient.goToAppointment(appointment2);
+	patient.goToAppointment();
+	patient.goToAppointment();
 	
 })();

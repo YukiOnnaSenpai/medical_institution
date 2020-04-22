@@ -23,8 +23,8 @@ class Patient extends Person{
 		this.appointment = appointment;
 	}
 
-	goToAppointment(appointment) {
-		appointment.execute();
+	goToAppointment() {
+		this.appointment.execute();
 		Logger.executeAppointment(appointment);
 		singletonLogger.executeAppointment(appointment);
 	}

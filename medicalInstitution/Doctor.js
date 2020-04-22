@@ -1,5 +1,6 @@
 import { Logger } from './Logger.js';
 import { Person }   from './Person.js';
+import { Patient }  from './Patient.js';
 import { singletonLogger } from './/SingletonLogger.js';
 import { BloodSugarExam } from './BloodSugarExam.js';
 import { BloodPressureExam } from './BloodPressureExam.js';
